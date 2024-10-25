@@ -1,32 +1,35 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alumination AR</title>
-    <!-- Include AR.js -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>Alumination VR</title>
+    <!-- Include A-Frame -->
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.7.2/aframe/build/aframe-ar.min.js"></script>
     <style>
-        body, html { margin: 0; padding: 0; overflow: hidden; }
+        body, html { margin: 0; padding: 0; overflow: hidden; height: 100%; }
     </style>
 </head>
 <body>
 
-<!-- AR.js Scene -->
-<a-scene embedded arjs>
-    <!-- Camera -->
-    <a-marker preset="hiro">
-        <!-- 3D Text for "alumination" -->
-        <a-text value="alumination" color="#FF5733" 
-                position="0 0.5 0" scale="2 2 2" 
-                rotation="0 180 0" 
-                geometry="primitive: plane; width: 2; height: 1;"></a-text>
-    </a-marker>
+<!-- A-Frame Scene for VR -->
+<a-scene>
+    <!-- Text for "alumination" centered in front of the camera -->
+    <a-text value="alumination" color="#FF5733"
+            position="0 1.6 -3" scale="3 3 3"
+            align="center" rotation="0 0 0"
+            width="6"></a-text>
 
-    <!-- Adding AR.js default camera -->
-    <a-entity camera></a-entity>
+    <!-- Background environment for VR experience -->
+    <a-sky color="#ECECEC"></a-sky>
+
+    <!-- VR Camera -->
+    <a-entity camera position="0 1.6 0">
+        <!-- Controls for VR interaction -->
+        <a-entity position="0 -0.5 -1" rotation="-30 0 0"
+                  geometry="primitive: plane; width: 2; height: 1.5"
+                  material="opacity: 0; shader: flat;"></a-entity>
+    </a-entity>
 </a-scene>
 
 </body>
